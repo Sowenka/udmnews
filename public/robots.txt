@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://udmnews.ru/sitemap.xml
+
+# Disallow API and cache
+Disallow: /api/cache/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Yandex specific
+User-agent: Yandex
+Allow: /
+Crawl-delay: 0.5
+
+# Google specific
+User-agent: Googlebot
+Allow: /

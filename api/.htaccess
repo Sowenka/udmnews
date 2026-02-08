@@ -1,0 +1,10 @@
+# Deny access to cache directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^cache/ - [F,L]
+</IfModule>
+
+# Set PHP settings
+<IfModule mod_php.c>
+    php_value default_charset UTF-8
+</IfModule>

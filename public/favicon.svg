@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#111827"/>
+  <rect x="40" y="40" width="432" height="432" rx="72" fill="#1f2937"/>
+  <text x="256" y="320" font-family="Arial, sans-serif" font-size="200" font-weight="bold" fill="#f59e0b" text-anchor="middle">УН</text>
+  <rect x="100" y="380" width="312" height="8" rx="4" fill="#f59e0b" opacity="0.6"/>
+</svg>

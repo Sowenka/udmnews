@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>Новости Удмуртии — последние новости Ижевска и Удмуртской Республики</title>
+    <meta name="title" content="Новости Удмуртии — последние новости Ижевска и Удмуртской Республики" />
+    <meta name="description" content="Актуальные новости Удмуртской Республики и Ижевска. Политика, экономика, общество, культура, спорт — всё о жизни региона в одном месте." />
+    <meta name="keywords" content="новости удмуртии, новости ижевска, удмуртская республика, ижевск новости, новости ур, удмуртия сегодня" />
+    <meta name="author" content="Новости Удмуртии" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Russian" />
+    <meta name="revisit-after" content="1 days" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://udmnews.ru/" />
+    <meta property="og:title" content="Новости Удмуртии — последние новости Ижевска и Удмуртской Республики" />
+    <meta property="og:description" content="Актуальные новости Удмуртской Республики и Ижевска. Политика, экономика, общество, культура, спорт." />
+    <meta property="og:image" content="https://udmnews.ru/og-image.jpg" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="Новости Удмуртии" />
+
+    <!-- Yandex verification -->
+    <meta name="yandex-verification" content="YANDEX_VERIFICATION_CODE" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#111827" />
+    <meta name="msapplication-TileColor" content="#111827" />
+
+    <!-- iOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="УдмНовости" />
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://izhlife.ru" />
+    <link rel="preconnect" href="https://susanin.news" />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://izhlife.ru" />
+    <link rel="dns-prefetch" href="https://susanin.news" />
+
+    <!-- SPA redirect handler for GitHub Pages -->
+    <script>
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var path = params.get('p');
+        if (path) {
+          var newUrl = window.location.origin + '/udmnews/' + path + window.location.hash;
+          window.history.replaceState(null, '', newUrl);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
