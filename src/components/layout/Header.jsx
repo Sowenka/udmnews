@@ -12,7 +12,7 @@ export function Header({ theme, toggleTheme, onMenuClick }) {
                 <div className="flex items-center gap-4">
                     <button
                         onClick={onMenuClick}
-                        className="rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-800 lg:hidden"
+                        className="rounded-lg p-2 text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800 lg:hidden"
                         aria-label="Открыть меню"
                     >
                         <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
