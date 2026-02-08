@@ -85,29 +85,29 @@ export function Sidebar({ isOpen, onClose }) {
                         <PopularNews />
                     </div>
 
-                    <div className="border-t border-gray-200 p-4 dark:border-gray-800">
-                        <div className="mb-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
+                    <div className="border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-800/50">
+                        <div className="mb-4 flex gap-4 text-xs">
                             <Link
                                 to="/privacy"
                                 onClick={onClose}
-                                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                                className="text-amber-600 hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300"
                             >
                                 Конфиденциальность
                             </Link>
                             <Link
                                 to="/cookies"
                                 onClick={onClose}
-                                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                                className="text-amber-600 hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300"
                             >
                                 Cookie
                             </Link>
                         </div>
 
-                        <p className="mb-2 text-xs text-gray-400 dark:text-gray-500">
+                        <p className="mb-3 text-xs leading-relaxed text-gray-500 dark:text-gray-400">
                             Новостной агрегатор Удмуртской Республики. Материалы взяты из открытых источников.
                         </p>
 
-                        <p className="text-xs text-gray-400 dark:text-gray-500">
+                        <p className="text-xs font-medium text-gray-400 dark:text-gray-500">
                             © {new Date().getFullYear()} Новости Удмуртии
                         </p>
                     </div>
