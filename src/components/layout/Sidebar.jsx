@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
@@ -12,6 +13,17 @@ import {
 } from 'react-icons/hi2'
 
 export function Sidebar({ isOpen, onClose }) {
+    // Блокируем скролл body когда sidebar открыт на мобильных
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [isOpen])
     const categories = [
         { id: 'all', name: 'Все новости', icon: HiOutlineNewspaper },
         { id: 'politics', name: 'Политика', icon: HiOutlineBuildingLibrary },
@@ -51,8 +63,8 @@ export function Sidebar({ isOpen, onClose }) {
                     </button>
                 </div>
 
-                <div className="flex h-[calc(100vh-57px)] flex-col overflow-y-auto lg:h-[calc(100vh-4rem)]">
-                    <nav className="shrink-0 p-4">
+                <div className="h-[calc(100vh-57px)] overflow-y-auto lg:h-[calc(100vh-4rem)]">
+                    <nav className="p-4">
                         <ul className="space-y-2">
                             {categories.map((category) => (
                                 <li key={category.id}>
@@ -69,11 +81,11 @@ export function Sidebar({ isOpen, onClose }) {
                         </ul>
                     </nav>
 
-                    <div className="min-h-0 shrink border-t border-gray-200 p-4 dark:border-gray-800">
+                    <div className="border-t border-gray-200 p-4 dark:border-gray-800">
                         <PopularNews />
                     </div>
 
-                    <div className="mt-auto shrink-0 border-t border-gray-200 p-4 dark:border-gray-800">
+                    <div className="border-t border-gray-200 p-4 dark:border-gray-800">
                         <div className="mb-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
                             <Link
                                 to="/privacy"
