@@ -39,11 +39,11 @@ export function Sidebar({ isOpen, onClose }) {
                     isOpen ? 'translate-x-0' : '-translate-x-full'
                 )}
             >
-                <div className="flex h-16 items-center justify-between border-b border-gray-200 px-4 dark:border-gray-800 lg:hidden">
-                    <span className="text-lg font-bold">Меню</span>
+                <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4 dark:border-gray-800 lg:hidden">
+                    <span className="text-lg font-bold text-gray-900 dark:text-white">Меню</span>
                     <button
                         onClick={onClose}
-                        className="rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="rounded-lg p-2 text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
                     >
                         <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
