@@ -1,18 +1,26 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
 import { PopularNews } from '@/components/news/PopularNews'
+import { useWeather, getWeatherInfo } from '@/hooks/useWeather'
+import { useCurrency } from '@/hooks/useCurrency'
 import {
     HiOutlineNewspaper,
     HiOutlineBuildingLibrary,
     HiOutlineBriefcase,
     HiOutlineUserGroup,
     HiOutlineSparkles,
-    HiOutlineTrophy
+    HiOutlineTrophy,
+    HiOutlineMagnifyingGlass
 } from 'react-icons/hi2'
 
 export function Sidebar({ isOpen, onClose }) {
+    const [searchQuery, setSearchQuery] = useState('')
+    const navigate = useNavigate()
+    const { weather } = useWeather()
+    const { currency } = useCurrency()
+
     // Блокируем скролл body когда sidebar открыт на мобильных
     useEffect(() => {
         if (isOpen) {
@@ -24,6 +32,22 @@ export function Sidebar({ isOpen, onClose }) {
             document.body.style.overflow = ''
         }
     }, [isOpen])
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        if (searchQuery.trim()) {
+            navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+            setSearchQuery('')
+            onClose()
+        }
+    }
+
+    const today = new Date().toLocaleDateString('ru-RU', {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'long'
+    })
+
     const categories = [
         { id: 'all', name: 'Все новости', icon: HiOutlineNewspaper },
         { id: 'politics', name: 'Политика', icon: HiOutlineBuildingLibrary },
@@ -64,6 +88,57 @@ export function Sidebar({ isOpen, onClose }) {
                 </div>
 
                 <div className="h-[calc(100vh-57px)] overflow-y-auto lg:h-[calc(100vh-4rem)]">
+                    {/* Мобильная информационная панель */}
+                    <div className="border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-800/50 lg:hidden">
+                        {/* Дата */}
+                        <p className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-300">
+                            {today.charAt(0).toUpperCase() + today.slice(1)}
+                        </p>
+
+                        {/* Поиск */}
+                        <form onSubmit={handleSearch} className="mb-4">
+                            <div className="relative">
+                                <HiOutlineMagnifyingGlass className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                                <input
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder="Поиск новостей..."
+                                    className="w-full rounded-lg border border-gray-200 bg-white py-2 pl-9 pr-4 text-sm text-gray-900 placeholder-gray-400 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
+                                />
+                            </div>
+                        </form>
+
+                        {/* Валюты и погода */}
+                        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+                            {currency && (
+                                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                                    <span className="text-gray-400">$</span>
+                                    <span className="font-medium">{currency.usd.value} ₽</span>
+                                    <span className="text-gray-300 dark:text-gray-600">|</span>
+                                    <span className="text-gray-400">€</span>
+                                    <span className="font-medium">{currency.eur.value} ₽</span>
+                                </div>
+                            )}
+                        </div>
+
+                        {weather && weather.length > 0 && (
+                            <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-600 dark:text-gray-300">
+                                {weather.map((city) => {
+                                    const { icon } = getWeatherInfo(city.code)
+                                    const temp = city.temp > 0 ? `+${city.temp}` : city.temp
+                                    return (
+                                        <span key={city.id} className="flex items-center gap-1">
+                                            <span className="text-gray-400">{city.name}</span>
+                                            <span>{icon}</span>
+                                            <span className="font-medium">{temp}°</span>
+                                        </span>
+                                    )
+                                })}
+                            </div>
+                        )}
+                    </div>
+
                     <nav className="p-4">
                         <ul className="space-y-2">
                             {categories.map((category) => (
