@@ -45,7 +45,8 @@ export function Sidebar({ isOpen, onClose }) {
     const today = new Date().toLocaleDateString('ru-RU', {
         weekday: 'short',
         day: 'numeric',
-        month: 'long'
+        month: 'long',
+        year: 'numeric'
     })
 
     const categories = [
@@ -109,18 +110,30 @@ export function Sidebar({ isOpen, onClose }) {
                             </div>
                         </form>
 
-                        {/* Валюты и погода */}
-                        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-                            {currency && (
-                                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        {/* Валюты */}
+                        {currency && (
+                            <div className="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-300">
+                                <span className="flex items-center gap-1">
                                     <span className="text-gray-400">$</span>
                                     <span className="font-medium">{currency.usd.value} ₽</span>
-                                    <span className="text-gray-300 dark:text-gray-600">|</span>
+                                    {currency.usd.diff !== 0 && (
+                                        <span className={currency.usd.diff > 0 ? 'text-green-500' : 'text-red-500'}>
+                                            {currency.usd.diff > 0 ? '↑' : '↓'}
+                                        </span>
+                                    )}
+                                </span>
+                                <span className="text-gray-300 dark:text-gray-600">|</span>
+                                <span className="flex items-center gap-1">
                                     <span className="text-gray-400">€</span>
                                     <span className="font-medium">{currency.eur.value} ₽</span>
-                                </div>
-                            )}
-                        </div>
+                                    {currency.eur.diff !== 0 && (
+                                        <span className={currency.eur.diff > 0 ? 'text-green-500' : 'text-red-500'}>
+                                            {currency.eur.diff > 0 ? '↑' : '↓'}
+                                        </span>
+                                    )}
+                                </span>
+                            </div>
+                        )}
 
                         {weather && weather.length > 0 && (
                             <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-600 dark:text-gray-300">
