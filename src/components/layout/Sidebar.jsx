@@ -51,8 +51,8 @@ export function Sidebar({ isOpen, onClose }) {
                     </button>
                 </div>
 
-                <div className="flex h-full flex-col lg:h-[calc(100vh-4rem)]">
-                    <nav className="p-4">
+                <div className="flex h-[calc(100vh-57px)] flex-col overflow-y-auto lg:h-[calc(100vh-4rem)]">
+                    <nav className="shrink-0 p-4">
                         <ul className="space-y-2">
                             {categories.map((category) => (
                                 <li key={category.id}>
@@ -69,11 +69,11 @@ export function Sidebar({ isOpen, onClose }) {
                         </ul>
                     </nav>
 
-                    <div className="flex-1 border-t border-gray-200 p-4 dark:border-gray-800">
+                    <div className="min-h-0 shrink border-t border-gray-200 p-4 dark:border-gray-800">
                         <PopularNews />
                     </div>
 
-                    <div className="border-t border-gray-200 p-4 dark:border-gray-800">
+                    <div className="mt-auto shrink-0 border-t border-gray-200 p-4 dark:border-gray-800">
                         <div className="mb-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
                             <Link
                                 to="/privacy"
