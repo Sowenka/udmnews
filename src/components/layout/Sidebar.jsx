@@ -174,7 +174,7 @@ export function Sidebar({ isOpen, onClose }) {
                     </div>
 
                     <div className="border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-800/50">
-                        <div className="mb-4 flex gap-4 text-xs">
+                        <div className="mb-4 flex justify-between gap-4 text-xs">
                             <Link
                                 to="/privacy"
                                 onClick={onClose}
@@ -195,7 +195,7 @@ export function Sidebar({ isOpen, onClose }) {
                             Новостной агрегатор Удмуртской Республики. Материалы взяты из открытых источников.
                         </p>
 
-                        <p className="text-xs font-medium text-gray-400 dark:text-gray-500">
+                        <p className="flex justify-center items-center text-xs font-medium text-gray-400 dark:text-gray-500">
                             © {new Date().getFullYear()} Новости Удмуртии
                         </p>
                     </div>
