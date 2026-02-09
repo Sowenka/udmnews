@@ -18,19 +18,18 @@ export function NewsCard({ news }) {
         susanin: 'Сусанин'
     }
 
-    const newsUrl = `/news/${news.id}`
+    const truncatedDescription = news.description
+        ? news.description.slice(0, Math.ceil(news.description.length * 0.2)) + '...'
+        : ''
 
     return (
-        <Link
-            to={newsUrl}
-            className="group block overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
-        >
+        <div className="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
             {news.image && (
                 <div className="aspect-video overflow-hidden">
                     <img
                         src={news.image}
                         alt={news.title}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="h-full w-full object-cover"
                         loading="lazy"
                     />
                 </div>
@@ -46,13 +45,15 @@ export function NewsCard({ news }) {
                     </span>
                 </div>
 
-                <h3 className="mb-2 line-clamp-2 font-semibold text-gray-900 group-hover:text-amber-500 dark:text-white dark:group-hover:text-amber-400">
+                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">
                     {news.title}
                 </h3>
 
-                <p className="mb-3 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
-                    {news.description}
-                </p>
+                {truncatedDescription && (
+                    <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+                        {truncatedDescription}
+                    </p>
+                )}
 
                 {news.tags && news.tags.length > 0 && (
                     <div className="mb-3 flex flex-wrap gap-1">
@@ -60,7 +61,6 @@ export function NewsCard({ news }) {
                             <Link
                                 key={tag}
                                 to={`/tag/${encodeURIComponent(tag)}`}
-                                onClick={(e) => e.stopPropagation()}
                                 className="rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-700 hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:hover:bg-amber-900/50"
                             >
                                 #{tag}
@@ -70,13 +70,23 @@ export function NewsCard({ news }) {
                 )}
 
                 <div className="flex items-center justify-between">
-                    <time className="text-xs text-gray-400 dark:text-gray-500">
-                        {formatDate(news.pubDate)}
-                    </time>
-                    <ShareButtons url={`${window.location.origin}${newsUrl}`} title={news.title} />
+                    <div className="flex items-center gap-3">
+                        <a
+                            href={news.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs font-medium text-amber-600 hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300"
+                        >
+                            Читать на {sourceNames[news.source] || 'источнике'}
+                        </a>
+                        <time className="text-xs text-gray-400 dark:text-gray-500">
+                            {formatDate(news.pubDate)}
+                        </time>
+                    </div>
+                    <ShareButtons url={news.link} title={news.title} />
                 </div>
             </div>
-        </Link>
+        </div>
     )
 }
 

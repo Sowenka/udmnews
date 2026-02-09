@@ -60,17 +60,22 @@ export function PopularNews() {
             }
 
             try {
-                const response = await fetch('/api/popular.php')
+                const response = await fetch('/api/news.php?page=1&limit=5')
                 if (!response.ok) throw new Error('API недоступен')
 
                 const data = await response.json()
+                const items = (data.news || []).map(item => ({
+                    id: item.id,
+                    title: item.title,
+                    link: item.link
+                }))
 
                 localStorage.setItem(POPULAR_CACHE_KEY, JSON.stringify({
-                    data: data.news,
+                    data: items,
                     timestamp: Date.now()
                 }))
 
-                setPopular(data.news)
+                setPopular(items)
             } catch {
                 // Используем mock данные
                 setPopular(MOCK_POPULAR)
