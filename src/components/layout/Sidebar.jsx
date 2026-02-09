@@ -71,8 +71,8 @@ export function Sidebar({ isOpen, onClose }) {
             {/* Sidebar */}
             <aside
                 className={cn(
-                    'fixed left-0 top-0 z-50 h-full w-64 shrink-0 transform border-r border-gray-200 bg-white transition-transform duration-300 dark:border-gray-800 dark:bg-gray-900',
-                    'lg:fixed lg:top-16 lg:z-40 lg:h-[calc(100vh-4rem)] lg:translate-x-0',
+                    'fixed left-0 top-0 z-50 h-full w-full shrink-0 transform border-r border-gray-200 bg-white transition-transform duration-300 dark:border-gray-800 dark:bg-gray-900',
+                    'lg:fixed lg:top-16 lg:z-40 lg:h-[calc(100vh-4rem)] lg:w-64 lg:translate-x-0',
                     isOpen ? 'translate-x-0' : '-translate-x-full'
                 )}
             >
