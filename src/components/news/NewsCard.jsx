@@ -18,9 +18,11 @@ export function NewsCard({ news }) {
         susanin: 'Сусанин'
     }
 
-    const truncatedDescription = news.description
-        ? news.description.slice(0, Math.ceil(news.description.length * 0.2)) + '...'
-        : ''
+    const getFirstSentence = (text) => {
+        if (!text) return ''
+        const match = text.match(/^[^.!?]+[.!?]/)
+        return match ? match[0] : text
+    }
 
     return (
         <div className="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -45,13 +47,13 @@ export function NewsCard({ news }) {
                     </span>
                 </div>
 
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">
+                <h3 className="mb-2 line-clamp-2 min-h-[3.5rem] text-lg font-semibold text-gray-900 dark:text-white">
                     {news.title}
                 </h3>
 
-                {truncatedDescription && (
+                {news.description && (
                     <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
-                        {truncatedDescription}
+                        {getFirstSentence(news.description)}
                     </p>
                 )}
 
@@ -71,6 +73,10 @@ export function NewsCard({ news }) {
 
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
+
+                        <time className="text-xs text-gray-400 dark:text-gray-500">
+                            {formatDate(news.pubDate)}
+                        </time>
                         <a
                             href={news.link}
                             target="_blank"
@@ -79,9 +85,6 @@ export function NewsCard({ news }) {
                         >
                             Читать на {sourceNames[news.source] || 'источнике'}
                         </a>
-                        <time className="text-xs text-gray-400 dark:text-gray-500">
-                            {formatDate(news.pubDate)}
-                        </time>
                     </div>
                     <ShareButtons url={news.link} title={news.title} />
                 </div>
