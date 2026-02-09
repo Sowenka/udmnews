@@ -25,7 +25,7 @@ export function NewsCard({ news }) {
     }
 
     return (
-        <div className="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+        <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-[0_0_15px_rgba(245,158,11,0.4)] dark:border-gray-700/50 dark:bg-gray-800 dark:hover:shadow-[0_0_20px_rgba(245,158,11,0.3)]">
             {news.image && (
                 <div className="aspect-video overflow-hidden">
                     <img
@@ -39,7 +39,7 @@ export function NewsCard({ news }) {
 
             <div className="p-4">
                 <div className="mb-2 flex items-center justify-between text-xs">
-                    <span className="rounded bg-gray-100 px-2 py-0.5 text-gray-500 dark:bg-gray-700 dark:text-gray-400">
+                    <span className="rounded-full bg-gray-100 px-2.5 py-0.5 font-medium text-gray-500 dark:bg-gray-700 dark:text-gray-400">
                         {news.category}
                     </span>
                     <span className="text-gray-400 dark:text-gray-500">
@@ -63,7 +63,7 @@ export function NewsCard({ news }) {
                             <Link
                                 key={tag}
                                 to={`/tag/${encodeURIComponent(tag)}`}
-                                className="rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-700 hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:hover:bg-amber-900/50"
+                                className="rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-700 transition-colors hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:hover:bg-amber-900/50"
                             >
                                 #{tag}
                             </Link>
@@ -81,7 +81,7 @@ export function NewsCard({ news }) {
                             href={news.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs font-medium text-amber-600 hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300"
+                            className="text-xs font-medium text-amber-600 transition-colors hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300"
                         >
                             Читать на {sourceNames[news.source] || 'источнике'}
                         </a>

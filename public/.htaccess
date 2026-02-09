@@ -10,15 +10,15 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 # Handle React Router (SPA)
-RewriteBase /
+RewriteBase /udmnews/
 RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/api/
-RewriteRule . /index.html [L]
+RewriteCond %{REQUEST_URI} !^/udmnews/api/
+RewriteRule . /udmnews/index.html [L]
 
 # Sitemap rewrite
-RewriteRule ^sitemap\.xml$ /api/sitemap.php [L]
+RewriteRule ^sitemap\.xml$ /udmnews/api/sitemap.php [L]
 
 # Cache Control for static assets
 <IfModule mod_expires.c>

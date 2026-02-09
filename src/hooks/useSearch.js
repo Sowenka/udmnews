@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { enrichNewsWithTags } from '@/lib/extractTags'
 
-const API_URL = '/api/search.php'
+const BASE_PATH = import.meta.env.BASE_URL || '/'
+const API_URL = `${BASE_PATH}api/search.php`
 
 // Mock заголовки
 const MOCK_TITLES = [

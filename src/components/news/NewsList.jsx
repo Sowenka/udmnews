@@ -34,11 +34,11 @@ export function NewsList({ news, loading, loadingMore, hasMore, error, onLoadMor
 
     if (loading) {
         return (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {[...Array(6)].map((_, i) => (
                     <div
                         key={i}
-                        className="animate-pulse rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
+                        className="animate-pulse rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700/50 dark:bg-gray-800"
                     >
                         <div className="aspect-video bg-gray-200 dark:bg-gray-700" />
                         <div className="p-4">
@@ -73,7 +73,7 @@ export function NewsList({ news, loading, loadingMore, hasMore, error, onLoadMor
 
     return (
         <>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {news.map((item) => (
                     <NewsCard key={item.id} news={item} />
                 ))}

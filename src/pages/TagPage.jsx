@@ -5,7 +5,8 @@ import { SEO } from '@/components/SEO'
 import { HiOutlineTag } from 'react-icons/hi2'
 import { enrichNewsWithTags } from '@/lib/extractTags'
 
-const API_URL = '/api/news.php'
+const BASE_PATH = import.meta.env.BASE_URL || '/'
+const API_URL = `${BASE_PATH}api/news.php`
 
 // Mock заголовки
 const MOCK_TITLES = [

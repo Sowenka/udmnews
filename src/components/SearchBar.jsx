@@ -13,7 +13,7 @@ export function SearchBar({ className }) {
         const trimmed = query.trim()
         if (trimmed) {
             navigate(`/search?q=${encodeURIComponent(trimmed)}`)
-            setIsExpanded(false)
+            setQuery('')
         }
     }
 

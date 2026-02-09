@@ -8,10 +8,10 @@ export function PWAPrompt() {
 
     return (
         <div className="fixed bottom-20 left-4 right-4 z-50 lg:bottom-4 lg:left-auto lg:right-4 lg:w-96">
-            <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-xl dark:border-gray-700 dark:bg-gray-800">
+            <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-xl dark:border-gray-700/50 dark:bg-gray-800">
                 <button
                     onClick={dismiss}
-                    className="absolute right-2 top-2 rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                    className="absolute right-2 top-2 rounded-lg p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                     aria-label="Закрыть"
                 >
                     <HiXMark className="h-5 w-5" />
@@ -47,13 +47,13 @@ export function PWAPrompt() {
                             <div className="flex gap-2">
                                 <button
                                     onClick={dismiss}
-                                    className="rounded px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+                                    className="rounded-lg px-3 py-1.5 text-sm text-gray-600 transition-colors hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
                                 >
                                     Не сейчас
                                 </button>
                                 <button
                                     onClick={install}
-                                    className="rounded bg-amber-500 px-3 py-1.5 text-sm font-medium text-gray-900 hover:bg-amber-400"
+                                    className="rounded-lg bg-amber-500 px-3 py-1.5 text-sm font-medium text-gray-900 transition-colors hover:bg-amber-400"
                                 >
                                     Установить
                                 </button>

@@ -83,7 +83,7 @@ export function ShareButtons({ url, title }) {
                     key={link.name}
                     onClick={(e) => handleShare(e, link)}
                     title={`Поделиться в ${link.name}`}
-                    className={`rounded p-1.5 text-gray-400 transition-colors ${link.color} dark:text-gray-500`}
+                    className={`rounded-lg p-1.5 text-gray-400 transition-all duration-200 ${link.color} dark:text-gray-500`}
                 >
                     <link.icon className="h-5 w-5" />
                 </button>

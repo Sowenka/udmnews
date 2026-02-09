@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { enrichNewsWithTags } from '@/lib/extractTags'
 
-const API_URL = '/api/news.php'
+const BASE_PATH = import.meta.env.BASE_URL || '/'
+const API_URL = `${BASE_PATH}api/news.php`
 const ITEMS_PER_PAGE = 12
 
 // Mock данные для разработки без PHP

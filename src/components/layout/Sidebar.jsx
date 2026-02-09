@@ -61,12 +61,13 @@ export function Sidebar({ isOpen, onClose }) {
     return (
         <>
             {/* Overlay */}
-            {isOpen && (
-                <div
-                    className="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden"
-                    onClick={onClose}
-                />
-            )}
+            <div
+                className={cn(
+                    'fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden',
+                    isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+                )}
+                onClick={onClose}
+            />
 
             {/* Sidebar */}
             <aside
@@ -80,7 +81,7 @@ export function Sidebar({ isOpen, onClose }) {
                     <span className="text-lg font-bold text-gray-900 dark:text-white">Меню</span>
                     <button
                         onClick={onClose}
-                        className="rounded-lg p-2 text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
+                        className="rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
                     >
                         <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -153,13 +154,13 @@ export function Sidebar({ isOpen, onClose }) {
                     </div>
 
                     <nav className="p-4">
-                        <ul className="space-y-2">
+                        <ul className="space-y-1">
                             {categories.map((category) => (
                                 <li key={category.id}>
                                     <Link
                                         to={category.id === 'all' ? '/' : `/category/${category.id}`}
                                         onClick={onClose}
-                                        className="flex items-center gap-3 rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                                        className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-gray-700 transition-colors hover:bg-amber-50 hover:text-amber-700 dark:text-gray-300 dark:hover:bg-amber-900/20 dark:hover:text-amber-400"
                                     >
                                         <category.icon className="h-5 w-5" />
                                         <span>{category.name}</span>
@@ -172,33 +173,34 @@ export function Sidebar({ isOpen, onClose }) {
                     <div className="border-t border-gray-200 p-4 dark:border-gray-800">
                         <PopularNews />
                     </div>
+                </div>
 
-                    <div className="border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-800/50">
-                        <div className="mb-4 flex justify-between gap-4 text-xs">
-                            <Link
-                                to="/privacy"
-                                onClick={onClose}
-                                className="text-amber-600 hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300"
-                            >
-                                Конфиденциальность
-                            </Link>
-                            <Link
-                                to="/cookies"
-                                onClick={onClose}
-                                className="text-amber-600 hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300"
-                            >
-                                Cookie
-                            </Link>
-                        </div>
-
-                        <p className="mb-3 text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-                            Новостной агрегатор Удмуртской Республики. Материалы взяты из открытых источников.
-                        </p>
-
-                        <p className="flex justify-center items-center text-xs font-medium text-gray-400 dark:text-gray-500">
-                            © {new Date().getFullYear()} Новости Удмуртии
-                        </p>
+                {/* Footer — вне скролла, прижат к низу */}
+                <div className="shrink-0 border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-800/50">
+                    <div className="mb-4 flex justify-between gap-4 text-xs">
+                        <Link
+                            to="/privacy"
+                            onClick={onClose}
+                            className="text-amber-600 transition-colors hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300"
+                        >
+                            Конфиденциальность
+                        </Link>
+                        <Link
+                            to="/cookies"
+                            onClick={onClose}
+                            className="text-amber-600 transition-colors hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300"
+                        >
+                            Cookie
+                        </Link>
                     </div>
+
+                    <p className="mb-3 text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+                        Новостной агрегатор Удмуртской Республики. Материалы взяты из открытых источников.
+                    </p>
+
+                    <p className="flex justify-center items-center text-xs font-medium text-gray-400 dark:text-gray-500">
+                        © {new Date().getFullYear()} Новости Удмуртии
+                    </p>
                 </div>
             </aside>
         </>

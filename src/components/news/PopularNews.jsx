@@ -60,7 +60,8 @@ export function PopularNews() {
             }
 
             try {
-                const response = await fetch('/api/news.php?page=1&limit=5')
+                const basePath = import.meta.env.BASE_URL || '/'
+                const response = await fetch(`${basePath}api/news.php?page=1&limit=5`)
                 if (!response.ok) throw new Error('API недоступен')
 
                 const data = await response.json()

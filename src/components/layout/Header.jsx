@@ -7,12 +7,12 @@ import { SearchBar } from '@/components/SearchBar'
 
 export function Header({ theme, toggleTheme, onMenuClick }) {
     return (
-        <header className="sticky top-0 z-50 border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+        <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/80 backdrop-blur-lg dark:border-gray-800/80 dark:bg-gray-900/80">
             <div className="relative flex items-center justify-between px-4 py-4 lg:justify-start lg:gap-4">
                 {/* Burger menu (mobile only) */}
                 <button
                     onClick={onMenuClick}
-                    className="rounded-lg p-2 text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800 lg:hidden"
+                    className="rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800 lg:hidden"
                     aria-label="Открыть меню"
                 >
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@ export function Header({ theme, toggleTheme, onMenuClick }) {
 
                     <button
                         onClick={toggleTheme}
-                        className="rounded-lg p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                        className="rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
                         aria-label="Переключить тему"
                     >
                         {theme === 'light' ? (
