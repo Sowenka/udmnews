@@ -15,7 +15,7 @@ export function HomePage() {
 
             <article>
                 <h1 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
-                    Последние новости Удмуртии
+                    Актуальные новости
                 </h1>
 
                 <NewsList
